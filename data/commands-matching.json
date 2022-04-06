@@ -1,0 +1,37 @@
+[
+    {
+        "mvcRegEx": "@model.*",
+        "regExFlag": "g",
+        "reactReplacement": ""
+    },
+    {
+        "mvcRegEx": "@using.*",
+        "regExFlag": "g",
+        "reactReplacement": ""
+    },
+    {
+        "mvcRegEx": "@{(.*?)}",
+        "regExFlag": "s",
+        "reactReplacement": "/* !! REPLACE THIS C# CODE WITH AN ANALOG IN JAVASCRIPT/REACT!! $1 */"
+    },
+    {
+        "mvcRegEx": "@Html\\.Sitecore\\(\\)\\.DynamicPlaceholder\\(\"(.*)\"\\)",
+        "regExFlag": "g",
+        "reactReplacement": "<Slot name=\"$1\" />"
+    },
+    {
+        "mvcRegEx": "\\\"?@Model\\.([a-zA-Z0-9_]*)\\\"?",
+        "regExFlag": "g",
+        "reactReplacement": "{model.$1}"
+    },
+    {
+        "mvcRegEx": "\\\"?@Html\\.Raw\\(Model\\.(.*)\\)\\\"?",
+        "regExFlag": "g",
+        "reactReplacement": "{model.$1}"
+    },
+    {
+        "mvcRegEx": "class=",
+        "regExFlag": "g",
+        "reactReplacement": "className="
+    }
+]
