@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Textarea from "../components/TextArea"
 import convert from "../lib/converter";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import Code from "../components/code";
+
 
 export default function Home() {
   const [convertedText, setConvertedText] = useState();
@@ -8,19 +12,27 @@ export default function Home() {
   const handleChange = (event) => {
 
     console.log(event.target.value);
-    const jsxText = convert(event.target.value);
-    
+    const jsxText = convert(event.target.innerText);
+
     setConvertedText(jsxText);
   };
 
-  return (
-    <div className="h-100 mh-100">
-      <h2>Converter!</h2>
-      <pre><code>
-      <Textarea onChange={handleChange}/>
-      <Textarea textToUse={convertedText} />
-      </code></pre>
+  useEffect(() => {
+    Prism.highlightAll();
+  });
 
+  return (
+    <div>
+      <h2>Sitecore MVC view to React component converter</h2>
+      <div className="row">
+        <div class="col">
+          <Textarea onChange={handleChange} />
+        </div>
+        <div class="col">
+          <Code code={convertedText} language="javascript" />
+        </div>
+      </div>
+     
     </div>
   )
 }

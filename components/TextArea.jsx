@@ -1,12 +1,15 @@
 const Textarea = ({ textToUse, onChange }) => {
   return (
-      <textarea
-        className="w-50 h-100 mh-100 bg-dark text-light"
-        id="exampleFormControlTextarea1"
-        rows="40"
-        value={textToUse}
-        onChange={onChange}
-      ></textarea>
+    <div className="code border border-primary">
+      <pre>
+        <code>
+          <div contenteditable="true" onInput={onChange} value={textToUse}>
+            This text can be edited by the user.
+          </div>
+        </code>
+      </pre>
+    </div>
+
   );
 };
 
